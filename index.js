@@ -202,7 +202,13 @@ function getCarInfoById(inventory, id) {
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
 function sortCarInventory(inventory) {
+//   let sortInventory = []
+//   for (let i = 0; i < inventory.length; i++) {
+//     sortInventory.push(inventory[i].car_model) ;
+// }
+// return inventory;
 
+return inventory.sort((num1, num2) => (num1.car_model > num2.car_model ? 1 : -1))
 }
 /**
  * ### Challenge `getModelYears`
@@ -214,8 +220,21 @@ function sortCarInventory(inventory) {
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
 function getModelYears(inventory) {
+//     let newArr = []
+//     for (let i = 0; i < length-1; i++) {
+//       newArr.push = inventory[i].car_year
+//     }
+//     return newArr;
+
+
+let years = [] ;
+for (let l = 0; l < inventory.length; l++) {
+  years.push(inventory[l].car_year)
+}
+return years;
 
 }
+
 
 /**
  * ### Challenge `getOlderCars`
@@ -230,7 +249,16 @@ function getModelYears(inventory) {
  * in the same order as they appear in the original inventory.
 */
 function getOlderCars(inventory, maxYear) {
-  /* code here */
+  let arrayOldercars = [] ;
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i].car_year <= maxYear) {
+      arrayOldercars.push(inventory[i]) ;
+    }
+    else {
+    }
+  }
+  return arrayOldercars;
+  
 }
 
 /**
@@ -245,7 +273,7 @@ function getOlderCars(inventory, maxYear) {
  * in the same order as they appear in the original inventory.
 */
 function getGermanCars(inventory) {
-  let germanCars=[];
+  const germanCars=[];
   for (let i = 0; i < inventory.length; i++) {
     if (inventory[i].car_make === "Audi" || inventory[i].car_make === "Mercedes-Benz" || inventory[i].car_make === "Volkswagen" || inventory[i].car_make === "BMW"){
       germanCars.push(inventory[i])
@@ -295,9 +323,16 @@ const argTimesTwo = (num) => {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
-}
+function carMaker(num) {
+    const obj = {
+      odometer: num,
+      drive: function(distance) {
+        return this.odometer = this.odometer + distance;
+      }
+    }
+    return obj;
+  }
+
 
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
